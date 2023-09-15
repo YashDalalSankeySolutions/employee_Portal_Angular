@@ -1,0 +1,29 @@
+#navbar{
+    background-color: lightblue;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: -webkit-sticky;
+    position: sticky;
+    top:0;
+    box-shadow:1px 1px 3px 2px grey ;
+}
+#siteName{
+    font-size: 25px;
+}
+#navigator{
+    /* background-color: red; */
+    width:15%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#navigator>a{
+    font-size: 18px;
+    text-decoration: none;
+    color:#585757;
+}
+#navigator>a:hover{
+    color:#000
+}

@@ -1,0 +1,41 @@
+<ng-container *ngIf="isUserValid">
+    <div class="modal_container">
+        <div id="card">
+            <div class="heading_modal">Employee Details</div>
+            <div id="profile_modal_container">
+                <div id="profile_image_container">
+                    <img src="{{user?.image}}" alt="profile image" id="profile_image"/>
+                </div>
+                <div id="profile_details">
+                    <div>
+                        <span class="profile_field">Id: </span> 
+                        <span class="profile_value">{{user?.id}}</span>
+                    </div>
+                    <div>
+                        <span class="profile_field">Name: </span>
+                        <span class="profile_value"> {{user?.name}}</span>
+                    </div>
+                    <div>
+                        <span class="profile_field">Age: </span>
+                        <span class="profile_value">{{user?.age}}</span>
+                        </div>
+                    <div>
+                        <span class="profile_field">Email: </span> 
+                        <span class="profile_value">{{user?.email}}</span>
+                    </div>
+                    <div>
+                        <span class="profile_field">Gender: </span>
+                        <span class="profile_value">{{user?.gender}}</span>
+                        </div>
+                    <div>
+                        <span class="profile_field">Designation: </span> 
+                        <span class="profile_value">{{user?.designation}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="!isUserValid">
+    <app-error-page></app-error-page>
+</ng-container>

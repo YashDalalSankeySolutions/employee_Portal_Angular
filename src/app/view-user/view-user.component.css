@@ -1,0 +1,54 @@
+.modal_container{
+    background-color: #f0eded;
+    height:90vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    
+}
+#card {
+    background-color: #fefefe;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width:700px;
+    border-radius: 10px;
+}
+.heading_modal{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+#profile_image_container{
+    display: flex;
+    justify-content: center;
+    text-align:  center;
+    margin:20px 0;
+    width:50%;
+    
+}
+#profile_image{
+    width:180px;
+    height:180px;
+    object-fit: cover;
+    border-radius: 50%;
+    filter:drop-shadow(5px 5px 10px #000)
+}
+#profile_modal_container{
+    display:flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+}
+
+#profile_details{
+    width:50%
+}
+#profile_details>div{
+    margin:10px 0;
+}
+.profile_field{
+    font-weight: 600;
+    /* display: inline; */
+}

@@ -1,0 +1,169 @@
+<form #f="ngForm" (submit)="onSubmit(f)">
+    <div class="formRow">
+        <!-- id -->
+        <div>
+           <label for="empId" class="fieldsLabel">Id</label><br>
+           <input 
+                type="number" 
+                id="empId" 
+                name="empId" 
+                class="fieldsInput" 
+                placeholder="Enter Id"
+                ngModel
+                #empId = 'ngModel'
+                (keyup)="getValue(empId)"
+                min="1"
+                required
+                appIdValidator
+            >
+            <div *ngIf="empId.touched && empId.invalid">
+                <p id="idError" *ngIf= "empId.errors?.['required']" class="error">Id Field required</p>
+                <p id="idError" *ngIf= "empId.errors?.['min'] || empId.errors?.['inValidId']" class="error">Invalid Id</p>
+            </div>
+       </div>
+       <!-- Name -->
+       <div>
+           <label for="name" class="fieldsLabel">Name</label><br>
+           <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="fieldsInput"  
+                placeholder="Enter Name"
+                ngModel
+                #name = 'ngModel'
+                (keyup)="getValue(name)"
+                required
+                pattern="^[a-zA-Z ]+$"
+            >
+            <div *ngIf="name.touched && name.invalid">
+                <p id="nameError" *ngIf= "name.errors?.['required']" class="error">Name Field required</p>
+                <p id="nameError" *ngIf= "name.errors?.['pattern']" class="error">Invalid Name</p>
+            </div>
+       </div>
+   </div>
+   <div class="formRow">
+        <!-- age -->
+        <div>
+            <label for="age" class="fieldsLabel" >Age</label><br>
+            <input 
+                type="number" 
+                id="age" 
+                name="age" 
+                class="fieldsInput" 
+                placeholder="Enter Age"
+                ngModel
+                #age = 'ngModel'
+                (keyup)="getValue(age)"
+                required
+                min="18"
+                max="60"
+            >
+            <!-- <p id="ageError" class="error"></p> -->
+            <div *ngIf="age.touched && age.invalid">
+                <p id="ageError" *ngIf= "age.errors?.['required']" class="error">Age Field required</p>
+                <p id="ageError" *ngIf= "age.errors?.['min'] || age.errors?.['max']" class="error">Invalid Age</p>
+            </div>
+        </div>
+        <!-- emailId -->
+        <div>
+            <label for="email" class="fieldsLabel" >EmailId</label><br>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="fieldsInput" 
+                placeholder="Enter Email Id"
+                ngModel
+                #email = 'ngModel'
+                (keyup)="getValue(email)"
+                required
+                pattern="^[\w\.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+            >
+            <!-- <p id="emailError" class="error"></p> -->
+            <div *ngIf="email.touched && email.invalid">
+                <p id="emailError" *ngIf= "email.errors?.['required']" class="error">Email Field required</p>
+                <p id="emailError" *ngIf= "email.errors?.['pattern']" class="error">Invalid Email</p>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div>
+            <!-- Image -->
+            <div>
+                <label for="image" class="fieldsLabel">Profile Image Url</label><br>
+                <input 
+                    type="url" 
+                    id="image" 
+                    class="fieldsInput" 
+                    name="image" 
+                    placeholder="Enter Image Url"
+                    ngModel
+                    #image = 'ngModel'
+                    (keyup)="getValue(image)"
+                    required
+                    pattern="^(http|https)://([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}(/[^\s]+)+\.(jpg|jpeg|gif|png)"
+                >
+                <!-- <p id="imageError" class="error"></p> -->
+                <div *ngIf="image.touched && image.invalid">
+                    <p id="imageError" *ngIf= "image.errors?.['required']" class="error">Image Url Field required</p>
+                    <p id="imageError" *ngIf= "image.errors?.['pattern']" class="error">Invalid Image Url</p>
+                </div>
+            </div>
+            
+        </div>
+        <div>
+            <!-- Gender -->
+            <div id="genderContainer">
+                <div>
+                    <label for="gender" class="fieldsLabel" id="gender">Gender</label>
+                </div>
+                <div>
+                    <input type="radio" id="male" name="gender" value="male" ngModel required>
+                    <label for="male" class="radioLabel">Male</label><br>
+                    <input type="radio" id="female" name="gender" value="female" ngModel required>
+                    <label for="female">Female</label><br>  
+                    <input  type="radio" id="other" name="gender" value="other" ngModel required>
+                    <label for="other">Other</label><br>
+                </div>
+                <div *ngIf="designation.touched && designation.invalid">
+                    <p id="designationError" *ngIf= "designation.errors?.['required']" class="error">Designation Field required</p>
+                    <!-- <p id="designationError" *ngIf= "designation.errors?.['pattern']" class="error">Image Url Email</p> -->
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <!-- designation -->
+        <div>
+            <label for="designation" class="fieldsLabel">Designation</label><br>
+            <select 
+                class="fieldsInput" 
+                id="designation"   
+                placeholder="select"
+                name="designation" 
+                ngModel
+                #designation = 'ngModel'
+                (keyup)="getValue(designation)"
+                required
+            >
+                <option value="" selected>Select</option>
+                <option value="Manager" >Manager</option>
+                <option value="Tester" >Tester</option>
+                <option value="Desiner">Desiner</option>
+                <option value="Developer" >Developer</option>
+                <option value="Architect">Architect</option>
+            </select>
+            <!-- <p id="designationError" class="error"></p> -->
+            <div *ngIf="designation.touched && designation.invalid">
+                <p id="designationError" *ngIf= "designation.errors?.['required']" class="error">Designation Field required</p>
+                <!-- <p id="designationError" *ngIf= "designation.errors?.['pattern']" class="error">Image Url Email</p> -->
+            </div>
+        </div>
+        <div id="formbtnContainer">
+            <button type="submit" id="addbtn" class="formbtn" [disabled]="f.invalid">Submit</button>
+            <button (click)="clearData(f)" id="clearbtn" class="formbtn">Clear</button>
+        </div> 
+    </div>
+</form>

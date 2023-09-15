@@ -1,0 +1,158 @@
+<!-- <tr class="table_content" > -->
+    <ng-container *ngIf="!isEditing">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.age}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.designation}}</td>
+        <td>
+            <button class="viewbtn btn" [routerLink]="['/view',user.id]">View</button>    
+            <button class="editbtn btn" (click)=edit()>Edit</button>    
+            <button class="deletebtn btn" (click)="deleteuser(user.id)">Delete</button> 
+        </td>
+    </ng-container>
+    <ng-container *ngIf="isEditing">
+
+        <!-- id -->
+        <td>
+            <input 
+                type="number" 
+                id="empId" 
+                name="empId" 
+                class="fieldsInput" 
+                [value] = "user.id"
+                #empId = 'ngModel'
+                [(ngModel)]="updatedUserDetails.id"
+                (keyup)="validate_id(empId)"
+                required
+                [appIdValidator]="initialId"
+                min="0"
+                placeholder="{{user.id}}"
+            >
+            <div *ngIf="empId.touched && empId.invalid">
+                <p id="idError" *ngIf= "empId.errors?.['required']" class="error">Id Field required</p>
+                <p id="idError" *ngIf= "empId.errors?.['min'] || empId.errors?.['inValidId']" class="error">Invalid Id</p>
+            </div>
+        </td>
+        <!-- name -->
+        <td>
+            <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="fieldsInput"  
+                placeholder="{{user.name}}"
+                ngModel
+                #name = 'ngModel'
+                [(ngModel)] = "updatedUserDetails.name"
+                (keyup)="validate_name(name)"
+                required
+                pattern="^[a-zA-Z ]+$"
+            >
+            <div *ngIf="name.touched && name.invalid">
+                <p id="nameError" *ngIf= "name.errors?.['required']" class="error">Name Field required</p>
+                <p id="nameError" *ngIf= "name.errors?.['pattern']" class="error">Invalid Name</p>
+            </div>
+        </td>
+        <!-- Age -->
+        <td>
+            <input 
+                type="number" 
+                id="age" 
+                name="age" 
+                class="fieldsInput" 
+                placeholder="{{user.age}}"
+                ngModel
+                #age = 'ngModel'
+                [(ngModel)]="updatedUserDetails.age"
+                (keyup)="validate_age(age)"
+                required
+                min="18"
+                max="60"
+            >
+            <!-- <p id="ageError" class="error"></p> -->
+            <div *ngIf="age.touched && age.invalid">
+                <p id="ageError" *ngIf= "age.errors?.['required']" class="error">Age Field required</p>
+                <p id="ageError" *ngIf= "age.errors?.['min'] || age.errors?.['max']" class="error">Invalid Age</p>
+            </div>
+        </td>
+        <!-- email -->
+        <td>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="fieldsInput" 
+                placeholder="{{user.email}}"
+                ngModel
+                #email = 'ngModel'
+                [(ngModel)]="updatedUserDetails.email"
+                (keyup)="validate_email(email)"
+                required
+                pattern="^[\w\.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+            >
+            <!-- <p id="emailError" class="error"></p> -->
+            <div *ngIf="email.touched && email.invalid">
+                <p id="emailError" *ngIf= "email.errors?.['required']" class="error">Email Field required</p>
+                <p id="emailError" *ngIf= "email.errors?.['pattern']" class="error">Invalid Email</p>
+            </div>
+        </td>
+        <!-- Gender -->
+        <td>
+            <!-- <div>
+                <input type="radio" id="male" name="gender" value="male" ngModel [(ngModel)]="updatedUser.gender">
+                <label for="male" class="radioLabel">Male</label><br>
+                <input type="radio" id="female" name="gender" value="female" ngModel [(ngModel)]="updatedUser.gender">
+                <label for="female">Female</label><br>  
+                <input  type="radio" id="other" name="gender" value="other" ngModel [(ngModel)]="updatedUser.gender">
+                <label for="other">Other</label><br>
+            </div> -->
+            <select 
+                class="fieldsInput" 
+                id="gender"   
+                placeholder="select"
+                name="gender" 
+                ngModel
+                #gender = 'ngModel'
+                [(ngModel)] = "updatedUserDetails.gender"
+                (change)="validate_gender(gender)"
+                required
+            >
+                <option value="male" >Male</option>
+                <option value="female" >Female</option>
+                <option value="other">Other</option>
+            </select>
+        </td>
+        <!-- designation -->
+        <td>
+            <select 
+                class="fieldsInput" 
+                id="designation"   
+                placeholder="select"
+                name="designation" 
+                ngModel
+                #designation = 'ngModel'
+                [(ngModel)] = "updatedUserDetails.designation"
+                (change)="validate_designation(designation)"
+                required
+            >
+                <option value="" selected>Select</option>
+                <option value="Manager" >Manager</option>
+                <option value="Tester" >Tester</option>
+                <option value="Desiner">Desiner</option>
+                <option value="Developer" >Developer</option>
+                <option value="Architect">Architect</option>
+            </select>
+            <!-- <p id="designationError" class="error"></p> -->
+            <div *ngIf="designation.touched && designation.invalid">
+                <p id="designationError" *ngIf= "designation.errors?.['required']" class="error">Designation Field required</p>
+                <!-- <p id="designationError" *ngIf= "designation.errors?.['pattern']" class="error">Image Url Email</p> -->
+            </div>
+        </td>
+        <td>
+            <button class="editbtn btn" (click)="save()" [disabled]="!isValidDetails()">Save</button>
+            <button class="deletebtn btn" (click)="cancel()" >cancel</button>
+        </td>
+    </ng-container>
+<!-- </tr> -->

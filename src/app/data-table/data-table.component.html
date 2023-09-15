@@ -1,0 +1,19 @@
+
+<table id="table">
+    <thead>
+        <tr id="table_heading">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Designation</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let user of usersdata">
+            <tr app-data-table-row [user]="user" class="table_content"></tr>
+        </ng-container>
+    </tbody>
+</table>

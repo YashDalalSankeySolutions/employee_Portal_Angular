@@ -1,0 +1,37 @@
+td{
+    text-align: center;
+    padding:8px 0;
+    margin:0;
+    color: #464545
+}
+.btn{
+    border:none;
+    padding:5px 10px;
+    border-radius: 3px;
+    /* width:5px; */
+    
+}
+.viewbtn{
+    background-color:lightblue;
+    margin-right:5px;
+}
+.editbtn{
+    background-color:rgb(194, 230, 173);
+    margin-right:5px;
+}
+.deletebtn{
+    background-color: #d67171;
+}
+.viewbtn:hover{
+    background-color:rgb(54, 182, 224);
+}
+.editbtn:hover{
+    background-color:rgb(148, 231, 100);
+}
+.deletebtn:hover{
+    background-color: #e62626;
+}
+.error{
+    color:red;
+    font-size: 12px;
+}

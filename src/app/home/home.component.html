@@ -1,0 +1,14 @@
+
+<div id="container">
+                
+    <!-- form -->
+    <div id="card">
+        <div id="heading">Add Employee Details</div>
+        <app-data-form></app-data-form>
+    </div>
+    <div  id="tableContainer"  *ngIf ='usersDataLength>0'>
+            <app-data-table></app-data-table>
+    </div>
+    <div id="noData" *ngIf ='usersDataLength<=0'>No Data Found</div>
+</div>
+

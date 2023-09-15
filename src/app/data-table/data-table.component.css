@@ -1,0 +1,23 @@
+table{
+    margin-top: 30px;
+    width:90vw;
+    border-spacing: 0px 1em;
+    border-collapse:separate;
+}
+#table_heading{
+    background-color: lightblue;
+    margin:20px 0;
+}
+.table_content{
+    background-color: #fff;
+    margin:20px 0;
+    /* display:flex; */
+    /* border-radius: 5px; */
+    box-shadow: 2px 2px 2px grey;
+}
+.table_content>td{
+    font-size: 15px;
+}
+th{
+    padding:8px 0;
+}
